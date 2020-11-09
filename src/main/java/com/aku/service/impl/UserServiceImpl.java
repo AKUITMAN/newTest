@@ -13,4 +13,24 @@ public class UserServiceImpl implements UserService {
     public List<Users> FindAll() {
         return userDao.FindAll();
     }
+
+    @Override
+    public Users FindOne(int id) {
+        return userDao.FindOne(id);
+    }
+
+    @Override
+    public int updata(Users users) {
+        return userDao.updata(users);
+    }
+
+    @Override
+    public int delect(int id) {
+        return userDao.delect(id);
+    }
+
+    @Override
+    public int add(Users users) {
+        return userDao.add(users);
+    }
 }

@@ -15,6 +15,7 @@
 </head>
 <body>
 <div>
+    <a href="newUser.jsp"><h2>新增</h2></a>
     <table border="1">
         <tr>
             <th>id</th>
@@ -30,8 +31,8 @@
                 <td>${users.gender}</td>
                 <td>${users.email}</td>
                 <td>
-                    <a href="">修改</a>|
-                    <a href="">删除</a>
+                    <a href="/FindOne?id=${users.id}">修改</a>|
+                    <a href="/delete?id=${users.id}">删除</a>
 
                 </td>
             </tr>
