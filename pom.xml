@@ -20,6 +20,12 @@
   </properties>
 
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>3.4.6</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -36,6 +42,11 @@
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>5.1.47</version>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.12</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
     <dependency>

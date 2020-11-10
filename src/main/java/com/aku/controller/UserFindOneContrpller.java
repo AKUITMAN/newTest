@@ -1,8 +1,10 @@
 package com.aku.controller;
 
+import com.aku.dao.UserDao;
+import com.aku.dbtools.page;
 import com.aku.pojo.Users;
 import com.aku.service.UserService;
-import com.aku.service.impl.UserServiceImpl;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,10 +17,11 @@ import java.io.IOException;
 public class UserFindOneContrpller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserService userService=new UserServiceImpl();
+        page pg=new page();
+        UserDao userDao=pg.mybatis();
         String ids=req.getParameter("id");
         int id=Integer.valueOf(ids);
-        Users users=userService.FindOne(id);
+        Users users=userDao.FindOne(id);
         req.setAttribute("users",users);
         req.getRequestDispatcher("/updata.jsp").forward(req,resp);
     }

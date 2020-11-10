@@ -1,3 +1,4 @@
+/*
 package com.aku.dao.impl;
 
 import com.aku.dao.UserDao;
@@ -111,3 +112,4 @@ public class UserDaoImpl implements UserDao {
         return 0;
     }
 }
+*/

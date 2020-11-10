@@ -1,3 +1,4 @@
+/*
 package com.aku.service.impl;
 
 import com.aku.dao.UserDao;
@@ -34,3 +35,4 @@ public class UserServiceImpl implements UserService {
         return userDao.add(users);
     }
 }
+*/

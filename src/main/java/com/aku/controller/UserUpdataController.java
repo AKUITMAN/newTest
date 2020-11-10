@@ -1,8 +1,10 @@
 package com.aku.controller;
 
+import com.aku.dao.UserDao;
+import com.aku.dbtools.page;
 import com.aku.pojo.Users;
 import com.aku.service.UserService;
-import com.aku.service.impl.UserServiceImpl;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,13 +24,15 @@ public class UserUpdataController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         UserFindAllController userFindAllController=new UserFindAllController();
-        UserService userService=new UserServiceImpl();
         int id=Integer.valueOf(req.getParameter("id"));
         String name=req.getParameter("usename");
         String gender=req.getParameter("usegender");
         String email=req.getParameter("usemail");
         Users users=new Users(id,name,gender,email);
-        int res=userService.updata(users);
+        page pg=new page();
+        UserDao userDao=pg.mybatis();
+        int res=userDao.update(users);
+       //int res=userService.updata(users);
         //req.getRequestDispatcher("/userlist").forward(req,resp);
         userFindAllController.doGet(req, resp);
 

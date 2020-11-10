@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aku.dao.UserDao">
+    <select id="FindAll" resultType="com.aku.pojo.Users">
+    select * from user;
+  </select>
+    <!--
+    1.@Param注解传参，（）中的内容一定要跟sql语句中#{}的内容一致
+    2.可以使用下表获取 #{arg0}，#{param1} 代表第一个参数#{arg1},#{param2}代表第二个
+    arg下标从0开始，param下标从1开始
+    3.通过对象来进行传参。select标签加入一个属性paramterType 传入对象的全限定类名 #{}中的内容就是属性名
+    4.通过map来进行传参。#{}中的内容就是map中的key值
+    -->
+    <select id="FindOne" resultType="Users">
+        select * from user where id=${uid}
+    </select>
+    <delete id="delete">
+        delete from user where id=#{uid}
+    </delete>
+    <update id="update" parameterType="Users">
+         update user set name=#{name},gender=#{gender},email=#{email} where id=#{id}
+    </update>
+    <!--
+    useGeneratedKeys 默认是false 改为true 表示，新增成功后，将id返回
+    keyProperty  id的标识
+    -->
+    <insert id="insertUserGetId" parameterType="Users" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user(name,gender,email) VALUES (#{name},#{gender},#{email})
+    </insert>
+</mapper>

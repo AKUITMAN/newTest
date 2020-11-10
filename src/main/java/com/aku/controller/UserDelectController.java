@@ -1,8 +1,8 @@
 package com.aku.controller;
 
+import com.aku.dao.UserDao;
+import com.aku.dbtools.page;
 import com.aku.service.UserService;
-import com.aku.service.impl.UserServiceImpl;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,9 +15,10 @@ public class UserDelectController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserFindAllController userFindAllController=new UserFindAllController();
-        UserService userService=new UserServiceImpl();
+        page pg=new page();
+        UserDao userDao=pg.mybatis();
         int id=Integer.valueOf(req.getParameter("id"));
-        int res=userService.delect(id);
+        int res=userDao.delete(id);
         userFindAllController.doGet(req, resp);
     }
 
